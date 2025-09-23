@@ -14,16 +14,24 @@ A quick demo to show how to set up an indexer for the stKDA token on Kadena Chai
 
 ## Quick Start
 
-1. Add your **Envio API key** to a `.env` file.
-2. Run the indexer locally:
+1. Clone this repo and install dependencies:
+
+```bash
+git clone https://github.com/enviodev/kadena-erc20-token-indexer.git
+cd kadena-erc20-token-indexer
+
+# install dependencies
+pnpm install
+```
+
+2. Create an **Envio API key** at https://envio.dev/app/api-tokens and add it to a `.env` file.
+3. Run the indexer locally:
 
 ```bash
 pnpm dev
 ```
 
-3. Open [http://localhost:8080](http://localhost:8080) to access the GraphQL Playground.
-
-    - Local password: `testing`
+4. Open [https://envio.dev/console](https://envio.dev/console) and click the **Playground** button to access the GraphQL Playground. It currently works only in Firefox or Chrome.
 
 ## Learn More
 
