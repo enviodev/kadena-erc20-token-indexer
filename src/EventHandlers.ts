@@ -1,6 +1,8 @@
-import { StKDA, Account, Approval } from "generated";
+import { indexer, Account, Approval } from "envio";
 
-StKDA.Approval.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "StKDA", event: "Approval" },
+  async ({ event, context }) => {
   //  getting the owner Account entity
   let ownerAccount = await context.Account.get(event.params.owner.toString());
 
@@ -27,9 +29,12 @@ StKDA.Approval.handler(async ({ event, context }) => {
 
   // this is the same for create or update as the amount is overwritten
   context.Approval.set(approvalObject);
-});
+}
+);
 
-StKDA.Transfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "StKDA", event: "Transfer" },
+  async ({ event, context }) => {
   let senderAccount = await context.Account.get(event.params.from.toString());
 
   if (senderAccount === undefined) {
@@ -68,4 +73,5 @@ StKDA.Transfer.handler(async ({ event, context }) => {
 
     context.Account.set(accountObject);
   }
-});
+}
+);

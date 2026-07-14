@@ -1,8 +1,10 @@
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
 name: stKDAIndexer
 description: stKDA Indexer built with HyperIndex by Envio
-networks:
-    - id: 5920 # Chainweb Testnet 20
+chains:
+    - id: 5920
+      hypersync_config:
+        url: "https://chainweb-testnet-20.hypersync.xyz" # Chainweb Testnet 20
       start_block: 0
       contracts:
           - name: StKDA
@@ -14,8 +16,6 @@ networks:
 # Unordered multichain mode allows you to index events from multiple chains
 # in realtime but doesn't guarentee ordering between chains
 # https://docs.envio.dev/docs/HyperIndex/multichain-indexing#unordered-multichain-mode
-unordered_multichain_mode: true
 # Preload optimisation makes your indexer much faster.
 # But be aware that your handlers will run twice,
 # so make sure to use Effect API for external calls.
-preload_handlers: true
